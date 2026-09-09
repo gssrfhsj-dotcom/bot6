@@ -1,0 +1,760 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameArena</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ga-green:#9dff00;
+    --ga-dark:#0b0d10;
+    --ga-dark2:#12151a;
+    --ga-dark3:#1a1e25;
+    --ga-text:#e9ecef;
+    --ga-muted:#9aa0a8;
+  }
+  body{
+    background-color:var(--ga-dark);
+    color:var(--ga-text);
+    font-family:'Poppins',sans-serif;
+  }
+  h1,h2,h3,h4,.brand{
+    font-family:'Orbitron',sans-serif;
+  }
+  a{ text-decoration:none; }
+
+  /* NAVBAR */
+  .navbar{
+    background-color:rgba(11,13,16,0.95);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .navbar-brand{
+    font-weight:900;
+    font-size:1.5rem;
+    color:#fff !important;
+    letter-spacing:1px;
+  }
+  .navbar-brand span{ color:var(--ga-green); }
+  .nav-link{
+    color:var(--ga-text) !important;
+    font-weight:500;
+    margin:0 .5rem;
+  }
+  .nav-link:hover{ color:var(--ga-green) !important; }
+  .btn-ga{
+    background-color:var(--ga-green);
+    color:#0b0d10;
+    font-weight:700;
+    border:none;
+    border-radius:6px;
+    padding:.6rem 1.6rem;
+  }
+  .btn-ga:hover{ background-color:#c2ff4d; color:#0b0d10; }
+  .btn-ga-outline{
+    border:2px solid var(--ga-green);
+    color:var(--ga-green);
+    font-weight:700;
+    border-radius:6px;
+    padding:.55rem 1.5rem;
+    background:transparent;
+  }
+  .btn-ga-outline:hover{ background-color:var(--ga-green); color:#0b0d10; }
+
+  /* HERO */
+  .hero{
+    background: radial-gradient(ellipse at top right, rgba(157,255,0,0.10), transparent 60%), var(--ga-dark);
+    padding:6rem 0 4rem;
+  }
+  .hero h1{
+    font-weight:900;
+    font-size:3.2rem;
+    line-height:1.15;
+  }
+  .hero h1 .accent{ color:var(--ga-green); }
+  .hero p{ color:var(--ga-muted); font-size:1.05rem; max-width:520px; }
+  .hero-img-wrap{
+    position:relative;
+  }
+  .hero-img-wrap img{
+    border-radius:16px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .stat-badge{
+    position:absolute;
+    bottom:-20px;
+    left:-20px;
+    background:var(--ga-dark3);
+    border:1px solid rgba(157,255,0,0.3);
+    border-radius:12px;
+    padding:1rem 1.5rem;
+  }
+  .stat-badge h3{ color:var(--ga-green); margin:0; font-weight:900; }
+  .stat-badge small{ color:var(--ga-muted); }
+
+  /* SECTION LABEL */
+  .section-label{
+    color:var(--ga-green);
+    letter-spacing:3px;
+    font-weight:700;
+    font-size:.85rem;
+    text-transform:uppercase;
+  }
+  .section-pad{ padding:5rem 0; }
+  .section-title{
+    font-weight:800;
+    font-size:2.2rem;
+  }
+
+  /* GAME CARDS */
+  .game-card{
+    background:var(--ga-dark2);
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.06);
+    transition:.25s;
+    height:100%;
+  }
+  .game-card:hover{
+    border-color:var(--ga-green);
+    transform:translateY(-4px);
+  }
+  .game-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+  }
+  .game-card .tag{
+    color:var(--ga-green);
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .game-card h5{ font-weight:700; margin-top:.25rem; }
+
+  /* WHAT WE DO */
+  .service-card{
+    background:var(--ga-dark2);
+    border-radius:14px;
+    padding:2rem;
+    height:100%;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .service-card img{
+    border-radius:10px;
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    margin-bottom:1rem;
+  }
+  .service-card h4{ font-weight:700; font-size:1.15rem; }
+
+  .brand-logos{
+    display:flex;
+    align-items:center;
+    gap:2.5rem;
+    overflow-x:auto;
+    padding:1rem 0;
+  }
+  .brand-logos img{
+    height:38px;
+    filter:grayscale(1) brightness(1.6);
+    opacity:.6;
+  }
+
+  /* TEAM */
+  .team-card{
+    background:var(--ga-dark2);
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.06);
+    text-align:center;
+  }
+  .team-card .img-wrap{
+    position:relative;
+  }
+  .team-card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+  }
+  .team-card .tag-name{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    background:rgba(157,255,0,0.9);
+    color:#0b0d10;
+    font-weight:900;
+    font-size:.7rem;
+    letter-spacing:1px;
+    padding:.2rem .6rem;
+    border-radius:4px;
+  }
+  .team-card .body{ padding:1.2rem; }
+  .team-card h5{ font-weight:700; margin-bottom:.2rem; }
+  .team-card .role{ color:var(--ga-green); font-size:.85rem; font-weight:600; }
+  .team-card .achievement{ color:var(--ga-muted); font-size:.8rem; }
+
+  /* CONTACT */
+  .contact-info-card{
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+    padding:1.2rem 0;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .contact-icon{
+    width:46px;height:46px;
+    background:rgba(157,255,0,0.12);
+    color:var(--ga-green);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    font-size:1.2rem;
+  }
+  .social-icon{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--ga-dark3);
+    color:var(--ga-green);
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .social-icon:hover{ background:var(--ga-green); color:#0b0d10; }
+  .contact-form{
+    background:var(--ga-dark2);
+    border-radius:16px;
+    padding:2.2rem;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .form-control, .form-select{
+    background:var(--ga-dark3);
+    border:1px solid rgba(255,255,255,0.1);
+    color:var(--ga-text);
+    border-radius:8px;
+    padding:.7rem 1rem;
+  }
+  .form-control:focus, .form-select:focus{
+    background:var(--ga-dark3);
+    color:var(--ga-text);
+    border-color:var(--ga-green);
+    box-shadow:0 0 0 .2rem rgba(157,255,0,.15);
+  }
+  .form-control::placeholder{ color:var(--ga-muted); }
+  .mini-stat{
+    text-align:center;
+  }
+  .mini-stat h3{ color:var(--ga-green); font-weight:900; }
+  .mini-stat small{ color:var(--ga-muted); }
+
+  /* FOOTER */
+  footer{
+    background:var(--ga-dark2);
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding-top:4rem;
+  }
+  footer h6{
+    color:#fff;
+    font-weight:700;
+    margin-bottom:1rem;
+  }
+  footer ul{ list-style:none; padding:0; }
+  footer ul li{ margin-bottom:.6rem; }
+  footer ul li a{ color:var(--ga-muted); }
+  footer ul li a:hover{ color:var(--ga-green); }
+  footer p{ color:var(--ga-muted); }
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.06);
+    margin-top:2.5rem;
+    padding:1.5rem 0;
+  }
+  .footer-bottom a{ color:var(--ga-muted); margin-left:1.2rem; font-size:.9rem; }
+  .footer-bottom a:hover{ color:var(--ga-green); }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">Game<span>Arena</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#latest-games">Our Games</a></li>
+        <li class="nav-item"><a class="nav-link" href="#what-we-do">What We Do</a></li>
+        <li class="nav-item"><a class="nav-link" href="#team-members">Our Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="#upcoming-tournaments">Tournaments</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+      </ul>
+      <a href="#" class="btn btn-ga">Sign In</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <h1>THE ULTIMATE <span class="accent">GAMING</span> EXPERIENCE</h1>
+        <p class="mt-3 mb-4">Join millions of gamers worldwide in the most competitive eSports tournaments. Experience next-level gaming with cutting-edge technology and endless possibilities.</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="#latest-games" class="btn btn-ga">Start Gaming Now</a>
+          <a href="#upcoming-tournaments" class="btn btn-ga-outline">Watch Tournaments</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-img-wrap">
+          <img src="https://game-arena-theta.vercel.app/assets/hero-img-C0b4IWtS.png" class="img-fluid" alt="Gaming setup">
+          <div class="stat-badge">
+            <h3>2.5M+</h3>
+            <small>Active Players</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST GAMES -->
+<section class="section-pad" id="latest-games">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">Our Games</div>
+      <h2 class="section-title">Our Latest Games</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-1-CfV33bjK.png" alt="Alien Companions">
+          <div class="p-3">
+            <div class="tag">Adventure &middot; Multiplayer</div>
+            <h5>Alien Companions</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-2-DcGt1MOH.png" alt="Cyber Run 2099">
+          <div class="p-3">
+            <div class="tag">Racing &middot; Sci-Fi</div>
+            <h5>Cyber Run 2099</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-3-3PuaZ95E.png" alt="The Legend of Zelda: Tears of the Kingdom">
+          <div class="p-3">
+            <div class="tag">Action &middot; GeForce</div>
+            <h5>The Legend of Zelda: Tears of the Kingdom</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-4-DCWGKdgP.png" alt="Aetheria Chronicles">
+          <div class="p-3">
+            <div class="tag">RPG &middot; Fantasy</div>
+            <h5>Aetheria Chronicles</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-5-D0uhM4CW.png" alt="Warfront Protocol">
+          <div class="p-3">
+            <div class="tag">Shooter &middot; Co-op</div>
+            <h5>Warfront Protocol</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-6-CJaIm3nW.png" alt="Shot Striker">
+          <div class="p-3">
+            <div class="tag">Football &middot; Fantasy</div>
+            <h5>Shot Striker</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-7-C9aSwQWa.png" alt="Epic Gaming League">
+          <div class="p-3">
+            <div class="tag">Sports &middot; League</div>
+            <h5>Epic Gaming League</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-8-CDS2WV4Q.png" alt="Barren alien worlds">
+          <div class="p-3">
+            <div class="tag">Space &middot; Exploration</div>
+            <h5>Barren alien worlds</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://game-arena-theta.vercel.app/assets/latest-games-9-BhBeVXRH.png" alt="Cloveland Quest">
+          <div class="p-3">
+            <div class="tag">Action &middot; Futuristic</div>
+            <h5>Cloveland Quest</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a href="#" class="btn btn-ga-outline">View All Games</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="section-pad" id="what-we-do" style="background:var(--ga-dark2);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">More Than Just Games</h2>
+      <p class="text-white-50 mt-2">We Build Interactive Journeys</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <h4>PC Game Development</h4>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <img src="https://game-arena-theta.vercel.app/assets/what-we-do-1-DuZnkwGW.png" alt="Mobile Game Development">
+          <h4>Mobile Game Development</h4>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <h4>AR/VR Solutions</h4>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <img src="https://game-arena-theta.vercel.app/assets/what-we-do-2-DVAo6agz.png" alt="AR/VR Design">
+          <h4>AR/VR Design</h4>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mx-auto">
+        <div class="service-card">
+          <h4>PS4 Game Development</h4>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mx-auto">
+        <div class="service-card">
+          <h4>3D Modelings</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-logos justify-content-between mt-5 pt-4 border-top border-secondary-subtle">
+      <img src="https://game-arena-theta.vercel.app/assets/logo-1-ByM-Sex8.jpg" alt="Nvidia">
+      <img src="https://game-arena-theta.vercel.app/assets/logo-2-0gIktwSm.jpg" alt="Intel">
+      <img src="https://game-arena-theta.vercel.app/assets/logo-3-CczztP90.jpg" alt="Razer">
+      <img src="https://game-arena-theta.vercel.app/assets/logo-4-CqgtpirC.jpg" alt="Corsair">
+      <img src="https://game-arena-theta.vercel.app/assets/logo-5-DFypfU0k.jpg" alt="Logitech G">
+      <img src="https://game-arena-theta.vercel.app/assets/logo-6-DcGD8G7v.jpg" alt="SteelSeries">
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section-pad" id="team-members">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">Our Team</div>
+      <h2 class="section-title">Our Best Team Members</h2>
+      <p class="text-white-50 mt-2">Meet the professional gamers and experts behind our success</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-1-Bk0fx3lX.png" alt="Alex Chen">
+            <span class="tag-name">PHANTOM</span>
+          </div>
+          <div class="body">
+            <h5>Alex "Phantom" Chen</h5>
+            <div class="role">Pro Player - VALORANT</div>
+            <div class="achievement">World Champion 2023</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-2-DSM5R69_.png" alt="Ali Ahmed">
+            <span class="tag-name">NOVA</span>
+          </div>
+          <div class="body">
+            <h5>Ali "Nova" Ahmed</h5>
+            <div class="role">Pro Player - League of Legends</div>
+            <div class="achievement">MVP 2023 Season</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-3-CISh2V2J.png" alt="Marcus Rodriguez">
+            <span class="tag-name">VIPER</span>
+          </div>
+          <div class="body">
+            <h5>Marcus "Viper" Rodriguez</h5>
+            <div class="role">Head Coach - CS:GO</div>
+            <div class="achievement">5x Major Winner</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-4-BCbP093U.png" alt="Seif Usama">
+            <span class="tag-name">SAGA</span>
+          </div>
+          <div class="body">
+            <h5>Seif "Saga" Usama</h5>
+            <div class="role">Strategic Analyst</div>
+            <div class="achievement">Data Science Expert</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-5-CKJm2Bjf.png" alt="Jake Wilson">
+            <span class="tag-name">STORM</span>
+          </div>
+          <div class="body">
+            <h5>Jake "Storm" Wilson</h5>
+            <div class="role">Pro Player - Apex Legends</div>
+            <div class="achievement">Rising Star 2023</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-6-BC4VdJS3.png" alt="David Park">
+            <span class="tag-name">TITAN</span>
+          </div>
+          <div class="body">
+            <h5>David "Titan" Park</h5>
+            <div class="role">Team Captain - Dota 2</div>
+            <div class="achievement">The International Winner</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-7-B1LKlfbK.png" alt="Khaled Ali">
+            <span class="tag-name">PHOENIX</span>
+          </div>
+          <div class="body">
+            <h5>Khaled "Phoenix" Ali</h5>
+            <div class="role">Content Creator</div>
+            <div class="achievement">2M+ Followers</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="team-card">
+          <div class="img-wrap">
+            <img src="https://game-arena-theta.vercel.app/assets/avatar-8-DlHfYIx6.png" alt="Ryan Miller">
+            <span class="tag-name">GHOST</span>
+          </div>
+          <div class="body">
+            <h5>Ryan "Ghost" Miller</h5>
+            <div class="role">Team Manager</div>
+            <div class="achievement">Operations Lead</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-pad" id="contact" style="background:var(--ga-dark2);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="text-white-50 mt-2">Have questions or need support? We're here to help!</p>
+    </div>
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="contact-info-card">
+          <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i>&#128205;</div>
+          <div>
+            <h5>Our Location</h5>
+            <p class="text-white-50 mb-0">123 Gaming Street, Esports City, EC 12345</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-icon">&#9742;</div>
+          <div>
+            <h5>Phone Number</h5>
+            <p class="text-white-50 mb-0">+1 (555) 123-4567</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-icon">&#9993;</div>
+          <div>
+            <h5>Email Address</h5>
+            <p class="text-white-50 mb-0">contact@gamearena.com</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h5>Join Our Community</h5>
+          <p class="text-white-50">Connect with us on social media for the latest updates</p>
+          <div class="d-flex gap-2">
+            <a href="https://x.com" class="social-icon">X</a>
+            <a href="https://facebook.com" class="social-icon">f</a>
+            <a href="https://instagram.com" class="social-icon">IG</a>
+            <a href="https://youtube.com" class="social-icon">YT</a>
+            <a href="https://twitch.tv" class="social-icon">TW</a>
+          </div>
+        </div>
+        <div class="row mt-5 text-center">
+          <div class="col-6 mini-stat">
+            <h3>24/7</h3>
+            <small>Support Available</small>
+          </div>
+          <div class="col-6 mini-stat">
+            <h3>&lt;1hr</h3>
+            <small>Average Response</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="contact-form">
+          <h5 class="mb-4">Send us a Message</h5>
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" placeholder="First Name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" placeholder="Email Address">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Subject</label>
+                <select class="form-select">
+                  <option>General Inquiry</option>
+                  <option>Tournament Support</option>
+                  <option>Technical Issue</option>
+                  <option>Partnership</option>
+                  <option>Media Request</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message</label>
+                <textarea class="form-control" rows="4" placeholder="Message"></textarea>
+              </div>
+              <div class="col-12 form-check ps-4">
+                <input type="checkbox" class="form-check-input" id="newsletter">
+                <label class="form-check-label text-white-50" for="newsletter">Subscribe to our newsletter for gaming updates</label>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-ga w-100">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <a class="navbar-brand" href="#hero">Game<span style="color:var(--ga-green);">Arena</span></a>
+        <p class="mt-3">The ultimate destination for competitive gaming, esports tournaments, and gaming community.</p>
+        <div class="d-flex gap-2">
+          <a href="https://x.com" class="social-icon">X</a>
+          <a href="https://facebook.com" class="social-icon">f</a>
+          <a href="https://instagram.com" class="social-icon">IG</a>
+          <a href="https://youtube.com" class="social-icon">YT</a>
+          <a href="https://twitch.tv" class="social-icon">TW</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Games</h6>
+        <ul>
+          <li><a href="#latest-games">VALORANT</a></li>
+          <li><a href="#latest-games">League of Legends</a></li>
+          <li><a href="#latest-games">CS:GO</a></li>
+          <li><a href="#latest-games">Dota 2</a></li>
+          <li><a href="#latest-games">Apex Legends</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h6>Tournaments</h6>
+        <ul>
+          <li><a href="#tournaments">Upcoming Events</a></li>
+          <li><a href="#tournaments">Live Matches</a></li>
+          <li><a href="#tournaments">Results</a></li>
+          <li><a href="#tournaments">Rankings</a></li>
+          <li><a href="#tournaments">Schedule</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h6>Support</h6>
+        <ul>
+          <li><a href="#support">Help Center</a></li>
+          <li><a href="#support">Contact Us</a></li>
+          <li><a href="#support">Bug Reports</a></li>
+          <li><a href="#support">Feature Requests</a></li>
+          <li><a href="#support">Community Guidelines</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+      <p class="mb-0">&copy; 2025 GameArena. All rights reserved.</p>
+      <div>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#cookies">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+

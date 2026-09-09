@@ -1,0 +1,262 @@
+.green{
+color: chartreuse;
+align-items: center;
+display: flex;
+gap: 10px;
+
+}
+
+.green i {
+    font-size: 20px;
+}
+
+.green h1 {
+    margin: 0;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 700;
+    font-family: sans-serif;
+}
+
+
+/*  */
+.navb{
+    background-color: rgb(0, 12, 8);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+   
+}
+
+.nav-links{
+    align-items: center;
+    display: flex;
+    gap: 30px;
+    text-decoration: none;
+    
+}
+
+.nav-right{
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+.navb a{
+   text-decoration: none !important; 
+   color: white;
+   transition: color 0.3s ease;
+}
+
+.navb a:hover{
+   color:chartreuse ;
+}
+
+
+
+
+/* home */
+
+
+
+
+.home{
+
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url('hero-bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .texttt    h1{
+    color: rgb(252, 248, 248);
+    font-family: sans-serif;
+    font-weight: 700;
+    line-height: 39px;
+    font-size: 32px;
+    font-style: normal;
+
+}
+span{
+    color: chartreuse;
+    font-family: sans-serif;
+    font-weight: 700;
+    line-height: 39px;
+    font-size: 32px;
+    font-style: normal;
+}
+p{
+    font-family: sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 12px;
+    font-style: normal;
+}
+
+
+.btn-lg1{
+    background-color:rgb(164,205 ,24 ) ;
+color: black;
+font-family:sans-serif;
+font-weight: 700;
+font-size: 12px;
+line-height: 18px;
+font-style: normal;
+padding: 15px;
+border-radius: 10px;
+border-color: rgb(164,205 ,24 ) ;
+}
+
+.btn-lg{
+    background-color: rgba(245, 245, 220, 0.007);
+    color: chartreuse;
+font-family:sans-serif;
+font-weight: 700;
+font-size: 12px;
+line-height: 18px;
+font-style: normal;
+padding: 15px;
+border-radius: 10px;
+border-color:rgb(164,205 ,24 ) ;
+
+
+
+
+}
+
+.home .cotener {
+  display: flex;
+  flex-direction:   row ;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+
+.home .hreoimg {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.text{
+   flex-grow: 1;
+   align-self: auto ;
+}
+img{
+    border-radius: 10px ;
+    border-color: chartreuse;
+    
+}
+
+
+
+/* ---- Yellow section label (OUR GAMES) ---- */
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.line {
+  height: 2px;
+  width: 40px;
+  background-color: #d4ff2f;
+}
+
+.label-text {
+  color: #d4ff2f;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+/* ---- Big heading below the label ---- */
+.games-heading {
+  color: white;
+  font-size: 42px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* ---- Carousel (Swiper.js) ---- */
+.swiper {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #d4ff2f;
+}
+
+.swiper-pagination-bullet-active {
+  background: #d4ff2f;
+}
+
+
+.section-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .line {
+    height: 2px;
+    width: 40px;
+    background-color: #d4ff2f;
+  }
+  .label-text {
+    color: #d4ff2f;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  h1 {
+    color: white;
+    font-size: 42px;
+    margin-bottom: 50px;
+  }
+
+
+
